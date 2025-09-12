@@ -1,6 +1,6 @@
 此次练习将Security Level设置为low。
 
-<h1 id="TdocK">Brute Force</h1>
+# Brute Force
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757555612399-922a46bd-ef5f-4e89-a6aa-827fd7b5b765.png)
 
 直接使用Burp抓包进行爆破。双击刚刚输入的`username`和`password`并点击`Add`变成有效载荷，参数的字典是从网上随便找的，设置好后开始攻击，发现返回长度有跟大部分的不同，查看响应，爆破成功：
@@ -11,14 +11,14 @@
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757558289852-5d8f5543-e045-4095-bdac-c98a7b4da177.png)
 
-<h1 id="AuZDS">Command Injection</h1>
+# Command Injection
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757559819946-859d2138-ec6f-4d49-bcca-6eca59edb9ae.png)
 
 输入宿主机的IP地址：
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757560124446-03494631-48d4-44f2-b211-5346c3b443ca.png)
 
-<h1 id="oavAc">CSRF</h1>
+# CSRF
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757560666957-e08446c9-ecf6-4c2a-a19b-056f987cfea3.png)
 
 修改密码界面，直接抓包，发现参数直接拼接在URL中：
@@ -27,7 +27,7 @@
 
 攻击者只需要让用户点击攻击者拼接的URL，即可达到修改密码的攻击目的。
 
-<h1 id="QZv5T">File Inclusion</h1>
+# File Inclusion
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757561085502-7a275215-7958-4b06-a3dd-88a5e2d29004.png)
 
 随意点击一个文件，发现文件名拼接在URL中，是可控的：
@@ -45,7 +45,7 @@ RFI（远程文件包含）示例：
 > 这里感觉文件包含和SSRF有点像，区别在于文件包含漏洞是通过控制文件路径来让应用程序执行未授权的文件，攻击者通常通过本地文件或远程文件来进行攻击。SSRF是通过伪造HTTP请求，让服务器访问本不该访问的 外部或内部资源，特别是在内网环境中，攻击者可以利用该漏洞获取敏感信息或执行恶意操作。
 >
 
-<h1 id="paduc">File Upload</h1>
+# File Upload
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757562177204-b3aeb63e-c450-4225-9b0d-5db90ae88be2.png)
 
 写个一句话木马`<?php eval($_POST['ant']); ?>`上传上去：
@@ -67,7 +67,7 @@ RFI（远程文件包含）示例：
 > + 成功执行`shell.php`之后就可以通过`cmd`参数执行命令，比如：`/hackable/upload/shell.php?cmd=whoami`
 >
 
-<h1 id="CGeZB">SQL Injection</h1>
+# SQL Injection
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757571104774-b30b6ce7-2fde-4fc4-9c87-64fd10055de0.png)
 
 输入`1`试试：
@@ -86,7 +86,7 @@ RFI（远程文件包含）示例：
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757571586843-b5c49a72-c3ea-44f9-a46b-8677f51b82d0.png)
 
-<h1 id="Aimwl">SQL Injection (Blind)</h1>
+# SQL Injection (Blind)
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757571638942-50b8927c-e640-4a35-805e-c2b9057c6dc8.png)
 
 题目提示是盲注。输入`1`：
@@ -103,7 +103,7 @@ RFI（远程文件包含）示例：
 
 所以数据库库名是`dvwa`。
 
-<h1 id="C2obp">Weak Session IDs</h1>
+# Weak Session IDs
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757572716844-17b479fa-f0d5-4995-9851-1659e672fa07.png)
 
 点击生成后抓包查看cookie：
@@ -114,14 +114,14 @@ RFI（远程文件包含）示例：
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757574921230-869f081d-6b22-423e-830b-3c6f34c67644.png)
 
-<h1 id="jJx2t">XSS（DOM）</h1>
+# XSS（DOM）
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757575532535-7b75a2ab-eefd-494d-80ef-36f698260f79.png)
 
 在URL中拼接一段XSS注入语句`?default=<script>alert('114514')</script>`：
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757575674280-6bb77739-4bb6-4030-84ca-9e2f28fefb84.png)
 
-<h1 id="hQMOp">XSS（Reflected）</h1>
+# XSS（Reflected）
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757575772922-5cb8c5f2-a942-438e-9df4-0857911bffaf.png)
 
 输入点数据看看：
@@ -135,7 +135,7 @@ RFI（远程文件包含）示例：
 > 这里感觉DOM型和反射型又有点像，区别在于DOM型是一种客户端的攻击，发生在浏览器端，而非服务器端，通过操作URL中的参数来进行攻击；反射型发生在服务器端处理请求时，依赖于用户点击恶意链接或提交恶意表单。
 >
 
-<h1 id="D6ppP">XSS（Stored）</h1>
+# XSS（Stored）
 输入点测试数据：
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757576413972-26ca8bfa-4d41-4636-9a67-a7fa465d119e.png)
@@ -148,7 +148,7 @@ RFI（远程文件包含）示例：
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757576513351-d091d189-7c4e-4a18-8965-b0b2a57b54de.png)
 
-<h1 id="KH7Mh">CSP Bypass</h1>
+# CSP Bypass
 > CSP Bypass漏洞是指绕过Web应用程序所设置的内容安全策略（CSP），从而允许攻击者执行恶意脚本或加载不信任的资源。通过CSP，网站可以指定哪些外部资源（如JavaScript 文件、CSS 样式表、图片等）是允许加载和执行的。  
 >
 
@@ -164,7 +164,7 @@ RFI（远程文件包含）示例：
 
 点击`raw`，把URL粘到靶场的输入框中提交。
 
-<h1 id="O4LZ4">JavaScript</h1>
+# JavaScript
 按要求输入`success`显示`Invalid token`：
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/43311313/1757580408945-2cd13e4f-b434-4187-9ebf-6b6fd5806d9f.png)

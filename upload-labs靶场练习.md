@@ -270,13 +270,4 @@ auto_prepend_file=shell.jpg
 
 回顾源码，发现其实也有别的思路，比如如果在Windows环境，可以用点空格点绕过，上传`shell.php. .`，最后在上传目录中的是`shell.php.`，而在Windows中<font style="color:rgb(51, 51, 51);">文件后缀名最后一个点会被自动去除。</font>
 
-<font style="color:rgb(51, 51, 51);">除此之外，黑名单依旧不完善，还是有一些</font>
-
-
-
-
-
-
-
-
-
+<font style="color:rgb(51, 51, 51);">除此之外，页面显示源码有点问题，没有对后缀名进行强制小写转换，导致存在一些大小写绕过，虽然真源码是有的。。。该靶场版本太多，源码太乱了。</font>
